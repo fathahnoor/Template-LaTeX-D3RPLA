@@ -1,0 +1,588 @@
+% ============================================================================
+% TUGAS AKHIR - JALUR MAGANG DUA SEMESTER (MADUSEM)
+% Template LaTeX laporan Tugas Akhir jalur Magang Dua Semester
+% Program Studi D3 Rekayasa Perangkat Lunak Aplikasi
+% Fakultas Ilmu Terapan, Universitas Telkom
+%
+% Sumber: Template TA Madusem_5.docx (milik Prodi D3RPLA, tidak ikut dipush ke repo).
+% Catatan: Jalur ini hanya memiliki 1 (satu) Dosen Pembimbing.
+% ============================================================================
+
+\documentclass[a4paper,12pt,oneside]{report}
+
+% --- Paket standar ---
+\usepackage[a4paper,margin=3cm]{geometry}
+\usepackage[onehalfspacing]{setspace} % spasi 1.5 untuk body
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{pdflscape} % halaman landscape (halaman tambahan)
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\graphicspath{{assets/}}
+
+% --- Format judul bab ---
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries\filcenter}{BAB \thechapter}{0pt}{}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+% --- Penomoran: Gambar/Tabel/Lampiran per bab ---
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+% Lampiran pakai counter sendiri
+\newcounter{lampiran}
+\renewcommand{\thelampiran}{\arabic{lampiran}}
+
+% --- Header/footer ---
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+% =====================================================================
+% HALAMAN COVER
+% =====================================================================
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    {\bfseries\Large JUDUL TUGAS AKHIR DALAM BAHASA INDONESIA\\(maksimal 3 baris)\par}
+    \vspace{1cm}
+    {\bfseries\Large JUDUL TUGAS AKHIR DALAM BAHASA INGGRIS\\(maximum 3 lines)\par}
+    \vspace{2cm}
+
+    Dokumen ini ditujukan untuk memenuhi persyaratan\\
+    Mata Kuliah Tugas Akhir\\
+    \textbf{Jalur Magang Dua Semester}\par
+    \vspace{2cm}
+
+    Disusun oleh,\\
+    NIM - NAMA\par
+    \vfill
+
+    \textbf{PROGRAM STUDI}\\
+    \textbf{D3 REKAYASA PERANGKAT LUNAK APLIKASI}\\
+    \textbf{FAKULTAS ILMU TERAPAN}\\
+    \textbf{UNIVERSITAS TELKOM}\\
+    \textbf{BANDUNG}\\
+    202\ldots\par
+\end{titlepage}
+
+% =====================================================================
+% LEMBAR PERSEMBAHAN
+% =====================================================================
+\chapter*{Lembar Persembahan}
+\addcontentsline{toc}{chapter}{LEMBAR PERSEMBAHAN}
+
+\begin{center}
+    Untuk orang tuaku,\\
+    orang paling berjasa di seluruh dunia.
+\end{center}
+
+\vspace{3cm}
+\begin{flushleft}
+    Nama \#1\\
+    Nama \#2
+\end{flushleft}
+
+% =====================================================================
+% LEMBAR PENGESAHAN
+% =====================================================================
+\chapter*{Lembar Pengesahan}
+\addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
+
+\noindent\textit{Pastikan kalimat dan penggalan judul sama persis dengan cover}
+
+\begin{center}
+    {\bfseries JUDUL TUGAS AKHIR DALAM BAHASA INDONESIA}\\[6pt]
+    {\bfseries JUDUL TUGAS AKHIR DALAM BAHASA INGGRIS}
+\end{center}
+
+\vspace{1cm}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{p{4cm}p{8cm}}
+        Penulis                 & Nama Lengkap Mahasiswa \\
+        NIM                     & 670\ldots\ldots \\
+        \multicolumn{2}{c}{} \\
+        Dosen Pembimbing        & Nama Dosen Pembimbing \\
+        NIP                     & 078\ldots\ldots \\
+    \end{tabular}
+\end{table}
+
+\vspace{2cm}
+\begin{center}
+    Tanggal Pengesahan: 31 Juli 2025 (tanggal pengumpulan revisi)
+\end{center}
+
+% =====================================================================
+% PERNYATAAN
+% =====================================================================
+\chapter*{Pernyataan}
+\addcontentsline{toc}{chapter}{PERNYATAAN}
+
+Dengan ini saya menyatakan bahwa:
+\begin{enumerate}[label=\arabic*.]
+    \item Karya tulis ini adalah asli dan belum pernah diajukan untuk mendapatkan
+    gelar akademik (Ahli Madya, Sarjana, Magister dan Doktor), baik di Fakultas
+    Ilmu Terapan Universitas Telkom maupun di perguruan tinggi lainnya;
+    \item karya tulis ini murni gagasan, rumusan, dan penelitian saya sendiri,
+    tanpa bantuan pihak lain, kecuali arahan tim pembimbing atau tim promotor
+    atau penguji;
+    \item dalam karya tulis ini tidak terdapat cuplikan karya atau pendapat yang
+    telah ditulis atau dipublikasikan orang lain, kecuali secara tertulis dengan
+    jelas dicantumkan sebagai acuan dalam naskah dengan menyebutkan nama
+    pengarang dan dicantumkan dalam daftar pustaka;
+    \item saya mengijinkan karya tulis ini dipublikasikan oleh Fakultas Ilmu
+    Terapan Universitas Telkom, dengan tetap mencantumkan saya sebagai penulis;
+    dan
+    \item Pernyataan ini saya buat dengan sesungguhnya dan apabila pada kemudian
+    hari terdapat penyimpangan dan ketidakbenaran dalam pernyataan ini maka saya
+    bersedia menerima sanksi akademik berupa pencabutan gelar yang telah
+    diperoleh karena karya tulis ini, serta sanksi lainnya sesuai norma yang
+    berlaku di Fakultas Ilmu Terapan Universitas Telkom.
+\end{enumerate}
+
+\vspace{2cm}
+\begin{flushright}
+    Bandung, 31 Juli 2025 (tanggal pengumpulan revisi)\\[6pt]
+    Pembuat pernyataan,\\[3cm]
+    (tulis nama jelas di sini tanpa gelar)
+\end{flushright}
+
+% =====================================================================
+% KATA PENGANTAR
+% =====================================================================
+\chapter*{Kata Pengantar}
+\addcontentsline{toc}{chapter}{KATA PENGANTAR}
+
+Berisi kata pengantar; dan ditulis dalam bahasa Indonesia baku.
+
+\vspace{3cm}
+\begin{flushright}
+    Bandung, \textless\textless Bulan\textgreater\ \textless\textless Tahun\textgreater\textgreater\\[6pt]
+    Penulis
+\end{flushright}
+
+% =====================================================================
+% ABSTRAK
+% =====================================================================
+\chapter*{Abstrak}
+\addcontentsline{toc}{chapter}{ABSTRAK}
+
+Abstrak adalah representasi dari isi dokumen yang singkat dan tepat. Tujuan
+abstrak adalah memudahkan pembaca mendapatkan informasi mengenai Tugas Akhir
+yang dibuat penulis tanpa harus membaca seluruh isi dokumen serta menghemat
+waktu pembaca. Abstrak ditulis dalam 1 paragraf saja, dengan panjang tidak
+lebih dari 250 (dua ratus lima puluh) kata dengan spacing 1. Abstrak tidak
+mencantumkan landasan teori. Abstrak harus dibuat dengan ringkas dan mampu
+menggambarkan alasan atau pentingnya Tugas Akhir ini, tujuan yang hendak
+dicapai (atau fitur-fitur utama yang ada dalam produk Tugas Akhir),
+langkah-langkah metode pengerjaannya, tools yang digunakan, dan kesimpulan.
+
+\vspace{1cm}
+\noindent\textbf{Kata Kunci:} (keywords abstrak 5-6 kata/frasa)
+
+% =====================================================================
+% ABSTRACT
+% =====================================================================
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+
+\begin{spacing}{1}
+\textit{Write your abstract in English. Using spacing 1 and italic.\\
+DO NOT USE ENGLISH TRANSLATOR SOFTWARE WITHOUT FURTHER EDITING}
+
+\vspace{1cm}
+\noindent\textbf{Keywords:} (abstract keywords 5-6 words/phrases)
+\end{spacing}
+
+% =====================================================================
+% DAFTAR ISI / GAMBAR / TABEL / LAMPIRAN
+% =====================================================================
+\tableofcontents
+\listoffigures
+\listoftables
+
+% Daftar Lampiran (manual karena bukan environment baku)
+\chapter*{Daftar Lampiran}
+\addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+\begin{enumerate}[label=Lampiran \arabic*.,leftmargin=*]
+    \item \ldots
+    \item \ldots
+\end{enumerate}
+
+% =====================================================================
+% BAB I PENDAHULUAN
+% =====================================================================
+\chapter{Pendahuluan}
+
+\section{Latar Belakang}
+Sub bab ini berisi alasan mengapa judul/topik ini diambil. Penulisan sub bab
+ini dimulai dari menjelaskan kondisi yang dialami saat ini, diikuti dengan
+masalah yang dialami saat ini, dan diakhiri dengan solusi yang ditawarkan untuk
+mengatasi masalah tersebut. Latar belakang harus menjelaskan urgensi dari
+masalah yang dialami dan didukung oleh data-data ilmiah yang dapat
+dipertanggungjawabkan kebenarannya. Contoh: pencatatan data yang ada di
+perusahaan X masih manual (menggunakan buku) dan data yang ada tersebar di
+masing-masing cabang, sehingga dengan adanya Sistem Informasi ini, data dapat
+terpusat pada kantor induk dan juga dapat diakses oleh seluruh cabang~\cite{ref1}.
+
+\section{Rumusan Masalah dan Solusi}
+Sub bab ini berisi fokus permasalahan yang dapat dirumuskan dari latar belakang
+yang telah dituliskan pada poin sebelumnya. Penulisan sub bab ini umumnya
+menyebutkan masalah yang perlu diteliti dalam kalimat tanya, tetapi dapat pula
+dibuat dalam bentuk kalimat pernyataan atau paragraf dengan rincian berbentuk
+numbering.
+
+Setiap masalah perlu diiringi dengan solusi sebagai proses penyelesaian masalah
+yang telah dipaparkan sebelumnya. Rencana solusi yang ditawarkan untuk
+menyelesaikan masalah yang dihadapi di tempat kerja/magang harus dapat
+menunjukkan implementasi keilmuan dari program studi.
+
+\section{Tujuan}
+Sub bab ini berisi alasan pekerjaan ini dilakukan dan apa saja jenis pekerjaan
+dan tanggung jawab yang dikerjakan oleh peserta kerja/magang. Penulisan sub bab
+ini umumnya dalam bentuk kalimat pernyataan atau paragraf dengan rincian
+berbentuk numbering.
+
+Tujuan menyatakan seberapa jauh output (sasaran terukur) yang hendak dicapai
+sebagai solusi untuk menjawab masalah-masalah yang telah dirumuskan dalam sub
+bab Rumusan Masalah.
+
+\section{Batasan Masalah}
+Dalam perumusan masalah dapat dijelaskan definisi, asumsi, dan lingkup yang
+menjadi batasan TA. Contoh:
+
+Batasan masalah dalam pembuatan aplikasi ini adalah:
+\begin{itemize}
+    \item Aplikasi diimplementasikan pada smartphone Android minimal versi Lollipop.
+    \item Dan seterusnya\ldots
+\end{itemize}
+
+\section{Penjadwalan Kerja}
+Sub bab ini berisi hal-hal apa yang akan dilakukan untuk mencapai solusi yang
+telah ditawarkan pada poin sebelumnya. Jadwal Pelaksanaan ini akan menjadi
+pedoman baik bagi mahasiswa maupun para pembimbing akan target-target pencapaian
+sesuai timeline yang disepakati.
+
+Satuan waktu yang digunakan sebagai timeline dapat disesuaikan dengan kebutuhan
+masing-masing pekerjaan yang dilakukan. Satuan waktu yang sebaiknya digunakan
+adalah satuan jam, hari, atau minggu.
+
+Contoh jadwal Pelaksanaan dalam satuan waktu minggu:
+
+\begin{table}[H]
+    \caption{Tabel Pelaksanaan Kerja}
+    \label{tab:jadwal-kerja}
+    \centering
+    \footnotesize
+    \begin{tabular}{|c|p{3.2cm}|*{12}{c|}}
+        \hline
+        \multirow{2}{*}{No} & \multirow{2}{*}{Deskripsi Kerja} & \multicolumn{12}{c|}{Bulan} \\ \cline{3-14}
+         & & \multicolumn{3}{c|}{1} & \multicolumn{3}{c|}{2} & \multicolumn{3}{c|}{3} & \multicolumn{3}{c|}{4} \\ \hline
+        1 & Diskusi      & \multicolumn{12}{c|}{} \\ \hline
+        2 & Perancangan  & \multicolumn{12}{c|}{} \\ \hline
+        3 & Penilaian    & \multicolumn{12}{c|}{} \\ \hline
+        4 & Penelitian   & \multicolumn{12}{c|}{} \\ \hline
+    \end{tabular}
+\end{table}
+
+\noindent\textbf{Petunjuk umum penulisan:}
+\begin{itemize}
+    \item Gunakan Bahasa Indonesia baku.
+    \item Bila mengambil dari referensi, tulis ulang (paraphrase), jangan copy-paste.
+    \item Judul Tabel dan Gambar seperti yang disertakan di bawah. Gunakan
+    fasilitas Caption dan cross-reference pada Ms.\ Word.
+    \item Semua tulisan pada gambar harus dapat terbaca dengan jelas. Gambar
+    harus proporsional dan hi-res.
+    \item Semua gambar dan tabel harus disebutkan pada narasi. Contoh, Tabel~\ref{tab:data-pengujian}
+    menampilkan data pengujian, sementara Gambar~\ref{fig:logo-telkom}
+    menampilkan logo universitas.
+    \item Referensi menggunakan standar IEEE. Semua Daftar Pustaka harus ditulis
+    dengan benar (terutama pada First Name -- Last Name).~\cite{ref1,ref2,ref3,ref4,ref5}.
+    Gunakan fasilitas References pada Ms.\ Word.
+    \item Gambar atau tabel yang lebih besar dari satu halaman, dituliskan pada
+    lampiran.
+\end{itemize}
+
+\begin{table}[H]
+    \caption{Data Pengujian}
+    \label{tab:data-pengujian}
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Header 1} & \textbf{Header 2} & \textbf{Header 3} \\ \hline
+        Isi 1 & Isi 2 & Isi 3 \\ \hline
+              &       &       \\ \hline
+              &       &       \\ \hline
+              &       &       \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\parbox{0.5\textwidth}{\centering\vspace{3cm}(Logo Telkom University)\vspace{3cm}}}
+    \caption{Logo Telkom University}
+    \label{fig:logo-telkom}
+\end{figure}
+
+% =====================================================================
+% BAB II PROFIL ORGANISASI
+% =====================================================================
+\chapter{Profil Organisasi}
+Sub bab ini berisi profil lengkap perusahaan seperti nama perusahaan, alamat
+perusahaan, sejarah perusahaan, logo perusahaan dan hal-hal lain yang perlu
+dijelaskan mengenai brand perusahaan. Apabila ada gambar yang perlu dicantumkan
+wajib diiringi dengan penjelasan gambar tersebut. Termasuk juga struktur
+organisasi institusi dicantumkan pada sub bab ini.
+
+\section{Deskripsi Organisasi}
+Bagian ini berisi penjelasan menggambarkan organisasi lokasi magang secara umum,
+meliputi nama perusahaan, merk/brand startup beserta filosofi logo, bidang,
+produk yang dimiliki, tanggal pendirian atau tanggal inisiasi pembentukan
+startup, ijin usaha (jika ada), bentuk perusahaan saat ini, dan
+kepemilikan/tim pendiri. Serta deskripsi usaha yang dilaksanakan oleh organisasi
+secara singkat.
+
+\section{Struktur Organisasi dan Tata Kelola}
+Sub bab ini berisi penjelasan spesifik mengenai unit kerja, divisi kerja, atau
+bagian kerja. Beberapa hal yang perlu disampaikan dalam sub bab ini diantaranya
+adalah:
+\begin{enumerate}
+    \item Deskripsi mengenai divisi tempat kerja/magang;
+    \item Daftar pekerjaan secara umum yang dilakukan oleh divisi tempat kerja/magang;
+    \item Keterkaitan pekerjaan tersebut dengan divisi lain;
+    \item Peran kerja divisi terhadap proses bisnis perusahaan secara utuh.
+\end{enumerate}
+Penulisan sub bab ini umumnya dalam bentuk narasi atau dengan pemodelan tertentu
+(misalnya flowchart).
+
+\section{Deskripsi Pekerjaan}
+Sub bab ini berisi alasan pekerjaan ini dilakukan dan apa saja jenis pekerjaan
+dan tanggung jawab yang dikerjakan oleh peserta kerja/magang. Berilah keterangan
+seberapa jauh ruang lingkup pekerjaan yang dikerjakan oleh peserta kerja/magang.
+
+Juga ditambahkan penjelasan alur kerja yang dilakukan oleh peserta kerja/magang
+dimulai dari persiapan hingga pekerjaan dianggap selesai dan/atau dilimpahkan
+pada unit lainya. Penulisan sub bab ini umumnya dalam bentuk pemodelan tertentu
+(misalnya flowchart) yang dijelaskan ke dalam bentuk narasi paragraf.
+
+% =====================================================================
+% BAB III ANALISIS PEKERJAAN
+% =====================================================================
+\chapter{Analisis Pekerjaan}
+Bagian ini berisi aktivitas yang dilakukan selama mengikuti program magang 2
+semester, dan capaian yang telah diperoleh melalui aktivitas tersebut.
+
+\section{Tinjauan Pustaka}
+Tinjauan pustaka berisi teori-teori yang akan digunakan dalam pengerjaan tugas
+akhir. Jadi bukan tentang sejarah sebuah framework atau tools tertentu. Sebagai
+contoh, ketika membahas tentang Android, fokus bahasan bukan tentang Android
+dibuat oleh siapa, diakuisisi sama siapa dan kapan kejadiannya. Tapi bahaslah
+tentang komponen aplikasi Android seperti activity, services, broadcast receiver
+dan content provider yang mungkin akan dipakai di aplikasi kalian nantinya.
+
+\section{Analisis Sistem}
+Sebagai sebuah solusi yang dapat terukur, penulis harus menentukan
+ukuran/kriteria kinerja dan menjadi acuan kualitas sistem yang dikembangkan.
+
+\subsection{Gambar Sistem Saat Ini}
+Sub bab ini berisi penjelasan mengenai sistem atau alur kerja yang ada saat ini
+dialami oleh peserta kerja/magang. Penulisan sub bab ini umumnya dalam bentuk
+paragraf narasi.
+
+\subsection{Pengembangan Sistem}
+Sub bab ini berisi penjelasan mengenai pengembangan/perubahan sistem atau alur
+kerja yang diajukan oleh peserta kerja/magang. Penulisan sub bab ini umumnya
+dalam bentuk paragraf narasi atau diagram. Sebagai contoh:
+
+\begin{itemize}
+    \item \textbf{Pada bidang Computer Technical Support, Network Administrator,
+    System Administrator.} Dapat berupa diagram sistem (baik sistem maupun
+    jaringan) serta file konfigurasi.
+    \item \textbf{Pada bidang Programmer, Web Programmer, Mobile Programmer.}
+    Dapat berupa perangkat lunak yang dibangun (mockup antar muka), bisa desain
+    sebelum implementasi maupun hasil setelah implementasi. Juga bisa dimasukkan
+    diagram rancangan perangkat lunak.
+    \item \textbf{Pada bidang Database Programmer.} Dapat berupa query, tabel,
+    database, subprogram dan pengimplementasiannya. File source .sql dapat
+    dilampirkan juga beserta kumpulan code query yang dibangun.
+    \item \textbf{Pada bidang Webmaster dan Multimedia Programmer.} Dapat berupa
+    alur penggunaan konten/multimedia yang dibangun (dapat dinyatakan dengan
+    flowchart ataupun diagram bisnis proses).
+    \item \textbf{Pada bidang Embedded Programmer.} Dapat berupa diagram
+    rancangan maupun alur kerja hardware dan juga diagram desain hardware yang
+    dibangun.
+    \item \textbf{Pada Bidang Quality Assurance.} Dapat berupa dokumen pengujian
+    dan skema pengujian yang anda bangun. Serta langkah-langkah penggunaan tools
+    pengujian yang digunakan dalam pengujian.
+\end{itemize}
+
+\section{Kebutuhan Perangkat Kerja}
+Sub bab ini berisi penjelasan perangkat kerja yang dipakai oleh peserta
+kerja/magang dimulai dari persiapan hingga pekerjaan dianggap selesai dan/atau
+dilimpahkan pada unit lainya. Penulisan sub bab ini umumnya dalam bentuk
+numbering atau tabel yang menjelaskan perangkat keras dan perangkat lunak apa
+saja yang digunakan dalam menyelesaikan pekerjaan. Jelaskan fungsi dari perangkat
+keras dan perangkat lunak yang digunakan dan lampirkan gambar atau screenshot
+dari perangkat tersebut.
+
+\subsection{Kebutuhan Perangkat Pengembangan Sistem}
+Membahas kebutuhan perangkat keras dan perangkat lunak yang digunakan dalam
+pengembangan sistem.
+
+\subsection{Kebutuhan Perangkat Implementasi Sistem}
+Membahas kebutuhan perangkat keras dan perangkat lunak yang digunakan dalam
+implementasi sistem yang telah dikembangkan di lingkungan operasional.
+
+\subsection{Sub Bab Tambahan (Bila Diperlukan)}
+Mohon disesuaikan.
+
+% =====================================================================
+% BAB IV HASIL DAN PEMBAHASAN
+% =====================================================================
+\chapter{Hasil dan Pembahasan}
+Bagian ini berisi deskripsi atau narasi yang menjelaskan hasil pengembangan
+sistem yang menjawab permasalahan pada organisasi lokasi magang.
+
+\section{Hasil Akhir (Luaran)}
+Sub bab ini berisi penjelasan mengenai hasil akhir (luaran) dari kerja/magang
+yang telah dilaksanakan secara umum dan proses selanjutnya setelah luaran selesai
+secara umum. Penulisan sub bab ini pada umumnya berbentuk paragraf narasi.
+
+Sub bab ini berisi mengenai detail hasil akhir dari kerja/magang. Penulisan dan
+isi dari bagian ini akan berbeda, sesuai dengan bidang kerja selama
+kerja/magang. Berikut contohnya.
+
+\begin{itemize}
+    \item \textbf{Pada bidang Computer Technical Support, Network Administrator,
+    System Administrator.} Luarannya dapat berupa diagram sistem (baik sistem
+    maupun jaringan) serta semua file konfigurasi dari sistem yang sudah dibangun
+    dan diatur (contoh file konfigurasi adalah file \texttt{httpd.conf} pada
+    apache web server). Bisa dicantumkan juga hasil pengujian sistem dan
+    implementasi. Foto dokumentasi sistem yang anda bangun dan jaringannya juga
+    dilampirkan.
+    \item \textbf{Pada bidang Programmer, Web Programmer, Mobile Programmer.}
+    Luarannya dapat berupa perangkat lunak yang dibangun (mockup antar muka).
+    Selain itu, apabila diperlukan source code dapat dilampirkan di laporan
+    akhir. Jika source code terlalu besar maka dapat dilampirkan dalam sebuah
+    CD/DVD. Printscreen aplikasi/web juga dilampirkan. Bisa dicantumkan juga
+    hasil pengujian sistem dan implementasi perangkat lunak.
+    \item \textbf{Pada bidang Database Programmer.} Luarannya dapat berupa query,
+    tabel, database, subprogram dan pengimplementasiannya. File source .sql
+    dapat dilampirkan juga beserta kumpulan code query yang dibangun. Bisa
+    dicantumkan juga hasil pengujian database.
+    \item \textbf{Pada bidang Webmaster dan Multimedia Programmer.} Luarannya
+    dapat berupa file konten/multimedia juga dapat dilampirkan berupa
+    printscreennya konten yang dibangun. File multimedia dapat dilampirkan dalam
+    sebuah CD/DVD. Bisa dicantumkan juga hasil pengujian aplikasi multimedia.
+    \item \textbf{Pada bidang Embedded Programmer.} Luarannya dapat berupa source
+    code dan hardware. File source code dapat dilampirkan di laporan ataupun
+    CD/DVD jika dirasa terlalu besar. Hardware yang dibangun juga dapat difoto.
+    Bisa dicantumkan juga hasil pengujian sistem dan implementasinya.
+    \item \textbf{Pada bidang Quality Assurance.} Luarannya dapat berupa dokumen
+    pengujian dan skema pengujian yang dibangun. Serta langkah-langkah penggunaan
+    tools pengujian yang digunakan dalam pengujian. Beberapa printscreen pengujian
+    yang dilakukan juga dilampirkan. Juga bisa dicantumkan rencana perbaikan dari
+    hasil pengujian.
+\end{itemize}
+
+\section{Pengujian Luaran}
+Membahas pengujian dari sistem yang telah dikembangkan atau luaran lain yang
+sesuai dengan permasalahan yang diselesaikan. Teknik pengujian dapat
+disesuaikan dengan karakteristik luaran yang telah dihasilkan.
+
+\subsection{Sub Bab Lain yang Relevan (Opsional)}
+Mohon disesuaikan.
+
+% =====================================================================
+% BAB V PENUTUP
+% =====================================================================
+\chapter{Penutup}
+Bagian ini berisi kesimpulan dari solusi yang telah dikembangkan untuk
+organisasi lokasi magang serta saran pengembangan kedepannya.
+
+\section{Kesimpulan}
+Sub bab ini berisi ringkasan pekerjaan mulai dari hal-hal yang memotivasi
+pekerjaan atau penelitian sampai ke hasil pekerjaan. Harap diperhatikan bahwa
+kesimpulan harus menjawab tujuan dan bersifat ilmiah. Kesimpulan adalah
+pembuktian bahwa tujuan dari pekerjaan atau penelitian yang telah tercapai.
+Jangan pernah menuliskan apa yang tidak pernah Anda analisis atau kerjakan
+sebelumnya.
+
+\section{Saran}
+Sub bab ini berisi hal-hal baru seperti alat/aplikasi/hasil survey yang
+diperoleh penulis yang dapat memperbaiki atau mengembangkan esensi dari
+pembahasan. Sertakan alasannya. Sebagai contoh, disarankan untuk menggunakan
+database Oracle karena mampu menangani data dalam jumlah yang lebih besar
+dibandingkan MySQL; dari analisis survey disarankan untuk menurunkan harga
+makanan sehingga lebih terjangkau bagi mahasiswa.
+
+% =====================================================================
+% DAFTAR PUSTAKA
+% =====================================================================
+\renewcommand{\bibname}{Daftar Pustaka}
+\begin{thebibliography}{9}
+\bibitem{ref1}
+I. Tin, ``Liputan 6 Tekno,'' 21 November 2016. [Online]. Available:
+\url{http://tekno.liputan6.com/read/2591339/tak-disangka-pengguna-bitcoin-di-indonesia-capai-200-ribu}.
+
+\bibitem{ref2}
+\textit{(Referensi kedua -- tulis sesuai format IEEE)}
+
+\bibitem{ref3}
+\textit{(Referensi ketiga -- tulis sesuai format IEEE)}
+
+\bibitem{ref4}
+\textit{(Referensi keempat -- tulis sesuai format IEEE)}
+
+\bibitem{ref5}
+\textit{(Referensi kelima -- tulis sesuai format IEEE)}
+\end{thebibliography}
+
+% =====================================================================
+% LAMPIRAN
+% =====================================================================
+\appendix
+\chapter{Lampiran}
+\stepcounter{lampiran}
+Bagian ini berisi lampiran-lampiran pendukung laporan tugas akhir.
+
+\section*{Lampiran 1}
+\addcontentsline{toc}{section}{Lampiran 1}
+\textit{(Isi lampiran 1)}
+
+\section*{Lampiran 2}
+\addcontentsline{toc}{section}{Lampiran 2}
+\textit{(Isi lampiran 2)}
+
+% =====================================================================
+% HALAMAN TAMBAHAN (contoh landscape)
+% =====================================================================
+\newpage
+\begin{landscape}
+\chapter*{Halaman Tambahan}
+\addcontentsline{toc}{chapter}{HALAMAN TAMBAHAN}
+\noindent\textit{Note: ini adalah contoh untuk halaman Landscape. Hapus jika tidak diperlukan.}
+\end{landscape}
+
+\end{document}

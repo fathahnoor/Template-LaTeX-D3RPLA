@@ -1,0 +1,441 @@
+% ============================================================================
+% TUGAS AKHIR - JALUR PUBLIKASI
+% Template LaTeX laporan Tugas Akhir jalur Publikasi
+% Program Studi D3 Rekayasa Perangkat Lunak Aplikasi
+% Fakultas Ilmu Terapan, Universitas Telkom
+%
+% Sumber: Template TA Publikasi_6.docx (milik Prodi D3RPLA, tidak ikut dipush ke repo).
+% Catatan: Jalur ini memiliki 2 Dosen Pembimbing. Urutan front matter sedikit
+% berbeda dari Reguler (Kata Pengantar sebelum Pernyataan pada sumber asli).
+% ============================================================================
+
+\documentclass[a4paper,12pt,oneside]{report}
+
+% --- Paket standar ---
+\usepackage[a4paper,margin=3cm]{geometry}
+\usepackage[onehalfspacing]{setspace}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{pdflscape}
+
+\hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
+\captionsetup{font=small,labelfont=bf,labelsep=period}
+\graphicspath{{assets/}}
+
+\titleformat{\chapter}[display]{\normalfont\huge\bfseries\filcenter}{BAB \thechapter}{0pt}{}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+
+\usepackage{chngcntr}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\leftmark}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+\begin{document}
+
+% =====================================================================
+% HALAMAN COVER
+% =====================================================================
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+    {\bfseries\Large JUDUL TUGAS AKHIR DALAM BAHASA INDONESIA\\(maksimal 3 baris)\par}
+    \vspace{1cm}
+    {\bfseries\Large JUDUL TUGAS AKHIR DALAM BAHASA INGGRIS\\(maximum 3 lines)\par}
+    \vspace{2cm}
+
+    Dokumen ini ditujukan untuk memenuhi persyaratan\\
+    Mata Kuliah Tugas Akhir\\
+    \textbf{Jalur Publikasi}\par
+    \vspace{2cm}
+
+    Disusun oleh,\\
+    NIM - NAMA\par
+    \vfill
+
+    \textbf{PROGRAM STUDI}\\
+    \textbf{D3 REKAYASA PERANGKAT LUNAK APLIKASI}\\
+    \textbf{FAKULTAS ILMU TERAPAN}\\
+    \textbf{UNIVERSITAS TELKOM}\\
+    \textbf{BANDUNG}\\
+    202\ldots\par
+\end{titlepage}
+
+% =====================================================================
+% LEMBAR PERSEMBAHAN
+% =====================================================================
+\chapter*{Lembar Persembahan}
+\addcontentsline{toc}{chapter}{LEMBAR PERSEMBAHAN}
+
+\begin{center}
+    Untuk orang tuaku,\\
+    orang paling berjasa di seluruh dunia.
+\end{center}
+
+\vspace{3cm}
+\begin{flushleft}
+    Nama \#1\\
+    Nama \#2
+\end{flushleft}
+
+% =====================================================================
+% LEMBAR PENGESAHAN
+% =====================================================================
+\chapter*{Lembar Pengesahan}
+\addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
+
+\noindent\textit{Pastikan kalimat dan penggalan judul sama persis dengan cover}
+
+\begin{center}
+    {\bfseries JUDUL TUGAS AKHIR DALAM BAHASA INDONESIA}\\[6pt]
+    {\bfseries JUDUL TUGAS AKHIR DALAM BAHASA INGGRIS}
+\end{center}
+
+\vspace{1cm}
+\begin{table}[h]
+    \centering
+    \begin{tabular}{p{4cm}p{8cm}}
+        Penulis                 & Nama Lengkap Mahasiswa \\
+        NIM                     & 670\ldots\ldots \\
+        \multicolumn{2}{c}{} \\
+        Dosen Pembimbing 1      & Nama Dosen Pembimbing 1 \\
+        NIP                     & 078\ldots\ldots \\
+        \multicolumn{2}{c}{} \\
+        Dosen Pembimbing 2      & Nama Dosen Pembimbing 2 \\
+        NIP                     & 098\ldots\ldots \\
+    \end{tabular}
+\end{table}
+
+\vspace{2cm}
+\begin{center}
+    Tanggal Pengesahan: 31 Juli 2025 (tanggal pengumpulan revisi)
+\end{center}
+
+% =====================================================================
+% KATA PENGANTAR
+% =====================================================================
+\chapter*{Kata Pengantar}
+\addcontentsline{toc}{chapter}{KATA PENGANTAR}
+
+Berisi kata pengantar; dan ditulis dalam bahasa Indonesia baku.
+
+\vspace{3cm}
+\begin{flushright}
+    Bandung, \textless\textless Bulan\textgreater\ \textless\textless Tahun\textgreater\textgreater\\[6pt]
+    Penulis
+\end{flushright}
+
+% =====================================================================
+% PERNYATAAN
+% =====================================================================
+\chapter*{Pernyataan}
+\addcontentsline{toc}{chapter}{PERNYATAAN}
+
+Dengan ini saya menyatakan bahwa:
+\begin{enumerate}[label=\arabic*.]
+    \item Karya tulis ini adalah asli dan belum pernah diajukan untuk mendapatkan
+    gelar akademik (Ahli Madya, Sarjana, Magister dan Doktor), baik di Fakultas
+    Ilmu Terapan Universitas Telkom maupun di perguruan tinggi lainnya;
+    \item karya tulis ini murni gagasan, rumusan, dan penelitian saya sendiri,
+    tanpa bantuan pihak lain, kecuali arahan tim pembimbing atau tim promotor
+    atau penguji;
+    \item dalam karya tulis ini tidak terdapat cuplikan karya atau pendapat yang
+    telah ditulis atau dipublikasikan orang lain, kecuali secara tertulis dengan
+    jelas dicantumkan sebagai acuan dalam naskah dengan menyebutkan nama
+    pengarang dan dicantumkan dalam daftar pustaka;
+    \item saya mengijinkan karya tulis ini dipublikasikan oleh Fakultas Ilmu
+    Terapan Universitas Telkom, dengan tetap mencantumkan saya sebagai penulis;
+    dan
+    \item Pernyataan ini saya buat dengan sesungguhnya dan apabila pada kemudian
+    hari terdapat penyimpangan dan ketidakbenaran dalam pernyataan ini maka saya
+    bersedia menerima sanksi akademik berupa pencabutan gelar yang telah
+    diperoleh karena karya tulis ini, serta sanksi lainnya sesuai norma yang
+    berlaku di Fakultas Ilmu Terapan Universitas Telkom.
+\end{enumerate}
+
+\vspace{2cm}
+\begin{flushright}
+    Bandung, 31 Juli 2025 (tanggal pengumpulan revisi)\\[6pt]
+    Pembuat pernyataan,\\[3cm]
+    (tulis nama jelas di sini tanpa gelar)
+\end{flushright}
+
+% =====================================================================
+% ABSTRAK
+% =====================================================================
+\chapter*{Abstrak}
+\addcontentsline{toc}{chapter}{ABSTRAK}
+
+Abstrak adalah representasi dari isi dokumen yang singkat dan tepat. Tujuan
+abstrak adalah memudahkan pembaca mendapatkan informasi mengenai Tugas Akhir
+yang dibuat penulis tanpa harus membaca seluruh isi dokumen serta menghemat
+waktu pembaca. Abstrak ditulis dalam 1 paragraf saja, dengan panjang tidak
+lebih dari 250 (dua ratus lima puluh) kata dengan spacing 1. Abstrak tidak
+mencantumkan landasan teori. Abstrak harus dibuat dengan ringkas dan mampu
+menggambarkan alasan atau pentingnya Tugas Akhir ini, tujuan yang hendak
+dicapai (atau fitur-fitur utama yang ada dalam produk Tugas Akhir),
+langkah-langkah metode pengerjaannya, tools yang digunakan, dan kesimpulan.
+
+\vspace{1cm}
+\noindent\textbf{Kata Kunci:} (keywords abstrak 5-6 kata/frasa)
+
+% =====================================================================
+% ABSTRACT
+% =====================================================================
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{ABSTRACT}
+
+\begin{spacing}{1}
+\textit{Write your abstract in English. Using spacing 1 and italic.\\
+DO NOT USE ENGLISH TRANSLATOR SOFTWARE WITHOUT FURTHER EDITING}
+
+\vspace{1cm}
+\noindent\textbf{Keywords:} (abstract keywords 5-6 words/phrases)
+\end{spacing}
+
+% =====================================================================
+% DAFTAR ISI / GAMBAR / TABEL / LAMPIRAN
+% =====================================================================
+\tableofcontents
+\listoffigures
+\listoftables
+
+\chapter*{Daftar Lampiran}
+\addcontentsline{toc}{chapter}{DAFTAR LAMPIRAN}
+\begin{enumerate}[label=Lampiran \arabic*.,leftmargin=*]
+    \item \ldots
+    \item \ldots
+\end{enumerate}
+
+% =====================================================================
+% BAB I RINGKASAN EKSEKUTIF
+% =====================================================================
+\chapter{Ringkasan Eksekutif}
+
+\section{Extended Abstract}
+Subbab ini dimulai dengan penjelasan mengenai latar belakang masalah yang
+mendasari penelitian. Penjelasan harus menggambarkan konteks umum dari topik
+yang diteliti dan menjelaskan mengapa penelitian ini penting untuk dilakukan,
+menjelaskan juga metodologi yang digunakan dalam penelitian, mencakup pendekatan
+yang diambil (misalnya, kualitatif, kuantitatif, atau campuran) serta teknik
+pengumpulan dan analisis data yang diterapkan. Dalam paragraf ini harus
+menunjukkan relevansi penelitian terhadap perkembangan ilmu pengetahuan atau
+masalah praktis yang dihadapi. Tujuan penelitian juga dijelaskan secara singkat,
+dengan fokus pada pertanyaan utama yang ingin dijawab dan kontribusi yang
+diharapkan dari hasil penelitian ini.
+
+\section{Penjadwalan Kerja}
+Sub bab ini berisi hal-hal apa yang akan dilakukan untuk mencapai solusi yang
+telah ditawarkan pada poin sebelumnya. Jadwal Pelaksanaan ini akan menjadi
+pedoman baik bagi mahasiswa maupun para pembimbing akan target-target pencapaian
+sesuai timeline yang disepakati.
+
+Satuan waktu yang digunakan sebagai timeline dapat disesuaikan dengan kebutuhan
+masing-masing pekerjaan yang dilakukan. Satuan waktu yang sebaiknya digunakan
+adalah satuan jam, hari, atau minggu.
+
+Contoh jadwal Pelaksanaan dalam satuan waktu minggu:
+
+\begin{table}[H]
+    \caption{Tabel Pelaksanaan Kerja}
+    \label{tab:jadwal-kerja}
+    \centering
+    \footnotesize
+    \begin{tabular}{|c|p{3.2cm}|*{12}{c|}}
+        \hline
+        \multirow{2}{*}{No} & \multirow{2}{*}{Deskripsi Kerja} & \multicolumn{12}{c|}{Bulan} \\ \cline{3-14}
+         & & \multicolumn{3}{c|}{1} & \multicolumn{3}{c|}{2} & \multicolumn{3}{c|}{3} & \multicolumn{3}{c|}{4} \\ \hline
+        1 & Diskusi      & \multicolumn{12}{c|}{} \\ \hline
+        2 & Perancangan  & \multicolumn{12}{c|}{} \\ \hline
+        3 & Penilaian    & \multicolumn{12}{c|}{} \\ \hline
+        4 & Penelitian   & \multicolumn{12}{c|}{} \\ \hline
+    \end{tabular}
+\end{table}
+
+\noindent\textbf{Petunjuk umum penulisan:}
+\begin{itemize}
+    \item Gunakan Bahasa Indonesia baku.
+    \item Bila mengambil dari referensi, tulis ulang (paraphrase), jangan copy-paste.
+    \item Judul Tabel dan Gambar seperti yang disertakan di bawah. Gunakan
+    fasilitas Caption dan cross-reference pada Ms.\ Word.
+    \item Semua tulisan pada gambar harus dapat terbaca dengan jelas. Gambar
+    harus proporsional dan hi-res.
+    \item Semua gambar dan tabel harus disebutkan pada narasi. Contoh,
+    Tabel~\ref{tab:data-pengujian} menampilkan data pengujian, sementara
+    Gambar~\ref{fig:logo-telkom} menampilkan logo universitas.
+    \item Referensi menggunakan standar IEEE. Semua Daftar Pustaka harus ditulis
+    dengan benar (terutama pada First Name -- Last Name).~\cite{ref1,ref2,ref3,ref4,ref5}.
+    \item Gambar atau tabel yang lebih besar dari satu halaman, dituliskan pada
+    lampiran.
+\end{itemize}
+
+\begin{table}[H]
+    \caption{Data Pengujian}
+    \label{tab:data-pengujian}
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Header 1} & \textbf{Header 2} & \textbf{Header 3} \\ \hline
+        Isi 1 & Isi 2 & Isi 3 \\ \hline
+              &       &       \\ \hline
+              &       &       \\ \hline
+              &       &       \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \centering
+    \fbox{\parbox{0.5\textwidth}{\centering\vspace{3cm}(Logo Telkom University)\vspace{3cm}}}
+    \caption{Logo Telkom University}
+    \label{fig:logo-telkom}
+\end{figure}
+
+% =====================================================================
+% BAB II PROSES REVIEW DAN PUBLIKASI
+% =====================================================================
+\chapter{Proses Review dan Publikasi}
+
+\section{Tahapan Publikasi}
+Subbab ini menjelaskan secara rinci tahapan yang harus dilalui dalam proses
+publikasi hasil penelitian, mulai dari persiapan hingga penerbitan artikel
+ilmiah. Proses ini mencakup beberapa langkah penting, seperti pemilihan jurnal
+yang sesuai dengan topik penelitian, penyusunan manuskrip sesuai dengan pedoman
+jurnal, serta pengajuan artikel untuk ditinjau oleh reviewer (peer review).
+Setelah diterima, penulis perlu mengikuti proses revisi yang mungkin diperlukan
+berdasarkan masukan dari reviewer, dan akhirnya artikel siap untuk diterbitkan.
+
+\section{Proses Review}
+Proses Review dalam jalur publikasi merupakan tahap krusial di mana naskah yang
+diajukan untuk dipublikasikan akan melalui evaluasi mendalam oleh para ahli di
+bidangnya. Pada tahap ini, reviewer akan menilai kualitas ilmiah, orisinalitas,
+serta relevansi artikel dengan topik yang diangkat. Proses ini mencakup
+pemeriksaan terhadap metodologi yang digunakan, analisis data, serta
+kesesuaian kesimpulan yang diambil dengan hasil yang diperoleh. Selain itu,
+reviewer juga akan memberikan saran atau rekomendasi untuk perbaikan yang dapat
+meningkatkan kualitas naskah sebelum akhirnya diterima untuk dipublikasikan.
+Proses review ini umumnya dilakukan secara blind review, di mana identitas
+penulis dan reviewer dirahasiakan untuk menjaga objektivitas dan mengurangi
+potensi bias.
+
+\section{Registrasi dan Publikasi}
+Registrasi dan Publikasi merupakan tahap akhir dalam proses jalur publikasi yang
+mencakup langkah-langkah untuk mengirimkan naskah yang telah diterima ke jurnal
+atau konferensi ilmiah yang sesuai. Pada subbab ini, penulis harus memastikan
+bahwa semua persyaratan administratif, seperti format naskah, data pendukung,
+serta surat izin publikasi, telah lengkap dan sesuai dengan pedoman yang
+ditentukan oleh penerbit. Proses registrasi biasanya melibatkan pengisian
+formulir pendaftaran, pengunggahan naskah, dan verifikasi informasi terkait
+penulis.
+
+Setelah naskah diterima, penerbit akan memulai proses publikasi yang bisa
+berupa terbitnya artikel dalam edisi cetak atau daring dari jurnal ilmiah, serta
+penyebarluasan hasil penelitian kepada publik akademik yang lebih luas. Penulis
+juga perlu memperhatikan hak cipta dan lisensi yang terkait dengan publikasi
+tersebut untuk memastikan keberlanjutan dan pengakuan atas karya ilmiah yang
+telah dipublikasikan.
+
+% =====================================================================
+% BAB III ARTIKEL ILMIAH
+% =====================================================================
+\chapter{Artikel Ilmiah}
+Bab ini menyajikan bagian utama (pendahuluan, tinjauan pustaka, metodologi,
+hasil, diskusi, kesimpulan) karya ilmiah yang telah dipublikasikan dengan tetap
+mengikuti gaya selingkung yang telah ditentukan oleh penerbit. Jika karya ilmiah
+yang telah dipublikasikan memiliki format atau setting halaman 2 kolom, maka
+penulis perlu merubah penyajiannya dalam format 1 kolom. Format penomoran
+gambar, tabel, serta citation style dapat mengikuti ketentuan penerbit dengan
+tetap memperhatikan ukuran dan jenis font serta spasi yang telah ditetapkan
+pada Pedoman Tugas Akhir.
+
+\textit{[Sisipkan artikel ilmiah yang telah dipublikasikan di sini.]}
+
+% =====================================================================
+% BAB IV PENUTUP
+% =====================================================================
+\chapter{Penutup}
+Bagian ini berisi kesimpulan dari solusi yang telah dikembangkan untuk
+organisasi lokasi magang serta saran pengembangan kedepannya.
+
+\section{Kesimpulan}
+Sub bab ini berisi ringkasan pekerjaan mulai dari hal-hal yang memotivasi
+pekerjaan atau penelitian sampai ke hasil pekerjaan. Harap diperhatikan bahwa
+kesimpulan harus menjawab tujuan dan bersifat ilmiah. Kesimpulan adalah
+pembuktian bahwa tujuan dari pekerjaan atau penelitian yang telah tercapai.
+Jangan pernah menuliskan apa yang tidak pernah Anda analisis atau kerjakan
+sebelumnya.
+
+\section{Saran}
+Bab ini memberikan saran terkait jalur publikasi yang dapat diambil untuk hasil
+penelitian ini. Saran ini mencakup berbagai platform publikasi, baik di jurnal
+ilmiah nasional maupun internasional yang relevan dengan topik penelitian,
+mempresentasikan hasil penelitian, serta pentingnya menjalin kolaborasi dengan
+peneliti lain untuk meningkatkan kualitas dan dampak dari publikasi.
+
+% =====================================================================
+% DAFTAR PUSTAKA
+% =====================================================================
+\renewcommand{\bibname}{Daftar Pustaka}
+\begin{thebibliography}{9}
+\bibitem{ref1}
+I. Tin, ``Liputan 6 Tekno,'' 21 November 2016. [Online]. Available:
+\url{http://tekno.liputan6.com/read/2591339/tak-disangka-pengguna-bitcoin-di-indonesia-capai-200-ribu}.
+
+\bibitem{ref2}
+\textit{(Referensi kedua -- tulis sesuai format IEEE)}
+
+\bibitem{ref3}
+\textit{(Referensi ketiga -- tulis sesuai format IEEE)}
+
+\bibitem{ref4}
+\textit{(Referensi keempat -- tulis sesuai format IEEE)}
+
+\bibitem{ref5}
+\textit{(Referensi kelima -- tulis sesuai format IEEE)}
+\end{thebibliography}
+
+% =====================================================================
+% LAMPIRAN
+% =====================================================================
+\appendix
+\chapter{Lampiran}
+Bagian ini berisi lampiran-lampiran pendukung laporan tugas akhir.
+
+\section*{Lampiran 1}
+\addcontentsline{toc}{section}{Lampiran 1}
+\textit{(Isi lampiran 1)}
+
+\section*{Lampiran 2}
+\addcontentsline{toc}{section}{Lampiran 2}
+\textit{(Isi lampiran 2)}
+
+% =====================================================================
+% HALAMAN TAMBAHAN (contoh landscape)
+% =====================================================================
+\newpage
+\begin{landscape}
+\chapter*{Halaman Tambahan}
+\addcontentsline{toc}{chapter}{HALAMAN TAMBAHAN}
+\noindent\textit{Note: ini adalah contoh untuk halaman Landscape. Hapus jika tidak diperlukan.}
+\end{landscape}
+
+\end{document}
