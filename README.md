@@ -2,13 +2,13 @@
 
 Template LaTeX untuk dokumen **Program Studi D3 Rekayasa Perangkat Lunak Aplikasi (D3RPLA)**, Fakultas Ilmu Terapan, Universitas Telkom, Bandung.
 
-> ⚠️ **Catatan:** Meskipun nama folder menyebut "LaTeX", referensi asli berupa file Microsoft Word (`.docx`). File `.docx` **tidak disertakan** di repositori ini karena merupakan milik Prodi D3RPLA dan hanya digunakan sebagai referensi untuk konversi. Repositori ini berisi hasil konversi ke format LaTeX (`.tex`).
+> ⚠️ **Disclaimer & Atribusi:** Semua dokumen referensi (`.docx`) diambil dari [https://projects.d3ifcool.org/dokumen-pa](https://projects.d3ifcool.org/dokumen-pa) dan merupakan milik **D3 Rekayasa Perangkat Lunak Aplikasi (D3RPLA), Telkom University**. File `.docx` **tidak disertakan** di repositori ini dan hanya digunakan sebagai referensi untuk konversi. Repositori ini berisi hasil konversi ke format LaTeX (`.tex`). Versi LaTeX dibuat untuk kemudahan penulisan dan tidak menggantikan pedoman resmi prodi.
 
 ## Daftar Template
 
 | File LaTeX | Kegunaan |
 |------------|----------|
-| `Template CV.tex` | Curriculum Vitae untuk Perwalian Akademik (PA) — identitas, SKS, project, sertifikasi, lomba, kegiatan. |
+| `Template CV.tex` | Curriculum Vitae untuk Proyek Akhir (PA): identitas, SKS, project, sertifikasi, lomba, kegiatan. |
 | `Template TA Reguler.tex` | Laporan Tugas Akhir **Jalur Reguler** (2 pembimbing: Pembimbing + Reviewer). |
 | `Template TA Madusem.tex` | Laporan Tugas Akhir **Jalur Magang Dua Semester** (1 pembimbing). |
 | `Template TA Publikasi.tex` | Laporan Tugas Akhir **Jalur Publikasi** (2 pembimbing). |
@@ -38,11 +38,11 @@ latexmk -pdf "Template TA Reguler.tex"
 
 Ketiga template TA (`Reguler`, `Madusem`, `Publikasi`) memiliki struktur front matter yang serupa:
 
-1. **Halaman Cover** — judul ( Indonesia + Inggris), jalur, nama, NIM, prodi, tahun.
+1. **Halaman Cover**: judul (Indonesia + Inggris), jalur, nama, NIM, prodi, tahun.
 2. **Lembar Persembahan**
-3. **Lembar Pengesahan** — dengan NIM (`670…` / `60706…`) dan NIP (`078…` / `098…`).
+3. **Lembar Pengesahan**: dengan NIM (`670…` / `60706…`) dan NIP (`078…` / `098…`).
 4. **Kata Pengantar** / **Pernyataan** *(urutan bervariasi per jalur, sesuai sumber asli)*
-5. **Abstrak** & **Abstract** — abstrak ≤ 250 kata, spacing 1.
+5. **Abstrak** & **Abstract**: abstrak ≤ 250 kata, spacing 1.
 6. **Daftar Isi / Gambar / Tabel / Lampiran**
 7. **Bab I – V** (isi bab berbeda per jalur)
 8. **Daftar Pustaka** (gaya IEEE)
@@ -64,4 +64,6 @@ Placeholder gambar pada template ditandai dengan `\fbox{...}`. Untuk menambahkan
 
 ## Lisensi & Atribusi
 
-Template asli (`.docx`) adalah milik **Prodi D3RPLA, Fakultas Ilmu Terapan, Universitas Telkom**. Versi LaTeX di repositori ini dibuat untuk kemudahan penulisan dan **tidak menggantikan** pedoman resmi prodi. Selalu rujuk pedoman terbaru dari prodi sebelum mengumpulkan tugas akhir.
+**Semua dokumen referensi (`.docx`) diambil dari [https://projects.d3ifcool.org/dokumen-pa](https://projects.d3ifcool.org/dokumen-pa) dan merupakan milik D3 Rekayasa Perangkat Lunak Aplikasi (D3RPLA), Telkom University.**
+
+File `.docx` sumber **tidak disertakan** di repositori ini (telah di-`gitignore`) dan hanya digunakan sebagai referensi untuk konversi ke LaTeX. Versi LaTeX (`.tex`) di repositori ini dibuat untuk kemudahan penulisan dan **tidak menggantikan** pedoman resmi prodi. Selalu rujuk pedoman terbaru dari prodi sebelum mengumpulkan tugas akhir.
