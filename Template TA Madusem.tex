@@ -31,7 +31,7 @@
 
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
 \captionsetup{font=small,labelfont=bf,labelsep=period}
-\graphicspath{{assets/}}
+\graphicspath{{assets/madusem/}{assets/}}
 
 % --- Format judul bab ---
 \titleformat{\chapter}[display]{\normalfont\huge\bfseries\filcenter}{BAB \thechapter}{0pt}{}
@@ -53,8 +53,10 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\leftmark}
+\fancyhead[R]{\raisebox{-0.1cm}{\includegraphics[height=0.7cm]{header-logo}}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{22pt}
 
 \begin{document}
 
@@ -72,7 +74,9 @@
     Dokumen ini ditujukan untuk memenuhi persyaratan\\
     Mata Kuliah Tugas Akhir\\
     \textbf{Jalur Magang Dua Semester}\par
-    \vspace{2cm}
+    \vspace{1cm}
+    \includegraphics[height=3cm]{cover-banner}\par
+    \vspace{1cm}
 
     Disusun oleh,\\
     NIM - NAMA\par
@@ -340,7 +344,7 @@ Contoh jadwal Pelaksanaan dalam satuan waktu minggu:
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.5\textwidth}{\centering\vspace{3cm}(Logo Telkom University)\vspace{3cm}}}
+    \includegraphics[height=5cm]{logo-telkom}
     \caption{Logo Telkom University}
     \label{fig:logo-telkom}
 \end{figure}

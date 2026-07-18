@@ -33,7 +33,7 @@
 
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
 \captionsetup{font=small,labelfont=bf,labelsep=period}
-\graphicspath{{assets/}}
+\graphicspath{{assets/reguler/}{assets/}}
 
 \titleformat{\chapter}[display]{\normalfont\huge\bfseries\filcenter}{BAB \thechapter}{0pt}{}
 \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
@@ -49,8 +49,10 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\leftmark}
+\fancyhead[R]{\raisebox{-0.1cm}{\includegraphics[height=0.7cm]{header-logo}}}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
+\setlength{\headheight}{22pt}
 
 % --- Style listing untuk source code ---
 \lstset{
@@ -78,7 +80,9 @@
     Dokumen ini ditujukan untuk memenuhi persyaratan\\
     Mata Kuliah Tugas Akhir\\
     \textbf{Jalur Reguler}\par
-    \vspace{2cm}
+    \vspace{1cm}
+    \includegraphics[height=3cm]{cover-banner}\par
+    \vspace{1cm}
 
     Disusun oleh,\\
     NIM - NAMA\par
@@ -420,7 +424,7 @@ finibus.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Komponen Aplikasi Android)\vspace{3cm}}}
+    \includegraphics[width=0.85\textwidth]{komponen-android}
     \caption{Komponen Aplikasi Android}
     \label{fig:komponen-android}
 \end{figure}
@@ -671,7 +675,7 @@ memiliki akses baca dan tulis ke kedua layanan ini.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Arsitektur Aplikasi)\vspace{3cm}}}
+    \includegraphics[width=0.85\textwidth]{arsitektur-aplikasi}
     \caption{Arsitektur Aplikasi}
     \label{fig:arsitektur-aplikasi}
 \end{figure}
@@ -696,7 +700,7 @@ dapat melakukan bla..bla..bla\ldots
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Use Case Diagram)\vspace{3cm}}}
+    \includegraphics[height=8cm]{use-case-diagram}
     \caption{Use Case Diagram}
     \label{fig:usecase}
 \end{figure}
@@ -739,8 +743,8 @@ use-case diagram yang ada di subbab 3.2.2.
     \begin{tabular}{|c|p{4cm}|p{6cm}|}
         \hline
         \textbf{No.} & \textbf{Tampilan} & \textbf{Penjelasan} \\ \hline
-        1 & \centering (Gambar Tampilan Kata Isyarat) & Tampilan ini muncul ketika pengguna melakukan klik pada menu Kata Isyarat. Di tampilan ini pengguna dapat melihat daftar kata isyarat yang diurutkan secara alfabetis. Jika pengguna melakukan klik pada salah satu kategori, maka kata isyarat yang muncul akan di-filter sesuai kategori yang dipilih. Selain itu pengguna juga dapat melakukan pencarian kata. Jika pengguna melakukan klik salah satu kata isyarat, maka akan muncul tampilan detil kata tersebut. \\ \hline
-        2 & \centering (Gambar Nama Tampilan) & Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in porttitor augue, vitae accumsan purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam pulvinar cursus magna vel eleifend. Nunc gravida elit sed lectus accumsan tempus. Fusce et convallis magna, at viverra ligula. Praesent rhoncus venenatis mattis. Sed maximus tortor tortor. \\ \hline
+        1 & \centering\includegraphics[height=4cm]{ui-kata-isyarat} & Tampilan ini muncul ketika pengguna melakukan klik pada menu Kata Isyarat. Di tampilan ini pengguna dapat melihat daftar kata isyarat yang diurutkan secara alfabetis. Jika pengguna melakukan klik pada salah satu kategori, maka kata isyarat yang muncul akan di-filter sesuai kategori yang dipilih. Selain itu pengguna juga dapat melakukan pencarian kata. Jika pengguna melakukan klik salah satu kata isyarat, maka akan muncul tampilan detil kata tersebut. \\ \hline
+        2 & \centering\includegraphics[height=4cm]{ui-nama-tampilan} & Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin in porttitor augue, vitae accumsan purus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam pulvinar cursus magna vel eleifend. Nunc gravida elit sed lectus accumsan tempus. Fusce et convallis magna, at viverra ligula. Praesent rhoncus venenatis mattis. Sed maximus tortor tortor. \\ \hline
     \end{tabular}
 \end{table}
 
@@ -756,7 +760,7 @@ dengan struktur data seperti tampak pada Gambar~\ref{fig:struktur-firebase}.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Struktur Data Firebase Realtime Database)\vspace{3cm}}}
+    \includegraphics[width=0.85\textwidth]{struktur-firebase}
     \caption{Struktur Data Firebase Realtime Database}
     \label{fig:struktur-firebase}
 \end{figure}
@@ -766,7 +770,7 @@ SQLite dengan struktur data seperti Gambar~\ref{fig:struktur-sqlite}.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Struktur Data SQLite)\vspace{3cm}}}
+    \includegraphics[width=0.8\textwidth]{struktur-sqlite}
     \caption{Struktur Data SQLite}
     \label{fig:struktur-sqlite}
 \end{figure}
@@ -781,7 +785,7 @@ disusun dalam sebuah rangkaian seperti Gambar~\ref{fig:skematik-iot}.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Rancangan Skematik Perangkat)\vspace{3cm}}}
+    \includegraphics[width=0.5\textwidth]{skematik-iot}
     \caption{Rancangan Skematik Perangkat}
     \label{fig:skematik-iot}
 \end{figure}
@@ -793,11 +797,11 @@ Tabel~\ref{tab:komponen-iot}.
     \caption{Daftar Komponen pada Perangkat}
     \label{tab:komponen-iot}
     \centering
-    \begin{tabular}{|c|p{4cm}|p{6cm}|}
+    \begin{tabular}{|c|m{3.5cm}|c|m{4.5cm}|}
         \hline
-        \textbf{No.} & \textbf{Komponen} & \textbf{Penjelasan} \\ \hline
-        1 & Arduino Uno & Untuk membuat berbagai hal yang berkaitan dengan fungsi mikrokontroler. \\ \hline
-        2 & Gyroscope MPU6050 & Sensor ini bisa mendeteksi gerakan kemiringan sesuai gravitasi, sehingga bisa digunakan untuk mendeteksi gerakan pengguna. \\ \hline
+        \textbf{No.} & \textbf{Komponen} & \textbf{Gambar} & \textbf{Penjelasan} \\ \hline
+        1 & Arduino Uno & \includegraphics[height=3cm]{arduino-uno} & Untuk membuat berbagai hal yang berkaitan dengan fungsi mikrokontroler. \\ \hline
+        2 & Gyroscope MPU6050 & \includegraphics[height=4cm]{mpu6050} & Sensor ini bisa mendeteksi gerakan kemiringan sesuai gravitasi, sehingga bisa digunakan untuk mendeteksi gerakan pengguna. \\ \hline
     \end{tabular}
 \end{table}
 
@@ -878,7 +882,7 @@ Gambar~\ref{fig:struktur-kode}.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Struktur Kode Project)\vspace{3cm}}}
+    \includegraphics[height=9cm]{struktur-kode-1}\hspace{0.3cm}\includegraphics[height=4.5cm]{struktur-kode-2}
     \caption{Struktur Kode Project}
     \label{fig:struktur-kode}
 \end{figure}
@@ -918,7 +922,7 @@ diperbaiki saat implementasi sehingga tampilan menjadi lebih konsisten.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Perbedaan UI Rancangan dan Implementasi)\vspace{3cm}}}
+    \includegraphics[height=7cm]{perbedaan-ui-1}\hspace{0.3cm}\includegraphics[height=7cm]{perbedaan-ui-2}
     \caption{Perbedaan UI Rancangan dan Implementasi}
     \label{fig:perbedaan-ui}
 \end{figure}
@@ -989,7 +993,7 @@ diabaikan juga.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Hasil Inspect Code)\vspace{3cm}}}
+    \includegraphics[width=0.8\textwidth]{inspect-code}
     \caption{Hasil Inspect Code}
     \label{fig:inspect-code}
 \end{figure}
@@ -1047,7 +1051,7 @@ fun listHurufTestActivity() {
 \textit{Noted: Penulisan Source Code menggunakan font Consolas ukuran 10}
 \end{minipage} \\ \hline
         \textbf{Kriteria Keberhasilan} & Ketika klik menu huruf dan angka pada tampilan utama, muncul tampilan list huruf. Ketika salah satu huruf diklik, muncul informasi detail dari huruf tersebut. \\ \hline
-        \textbf{Hasil} & (lampirkan screenshot hasil) \\ \hline
+        \textbf{Hasil} & \includegraphics[width=0.7\linewidth]{test-hasil} \\ \hline
     \end{tabular}
 \end{table}
 
@@ -1079,7 +1083,7 @@ pada Gambar~\ref{fig:grafik-effectiveness}.
 
 \begin{figure}[H]
     \centering
-    \fbox{\parbox{0.7\textwidth}{\centering\vspace{3cm}(Grafik Respon Effectiveness)\vspace{3cm}}}
+    \includegraphics[width=0.8\textwidth]{grafik-effectiveness}
     \caption{Grafik Respon Effectiveness}
     \label{fig:grafik-effectiveness}
 \end{figure}
@@ -1181,13 +1185,34 @@ pernah dirujuk dalam bab-bab sebelumnya.
 
 \chapter{Dokumentasi Kegiatan}
 \label{sec:lampiran-dokumentasi}
-\begin{itemize}
-    \item Foto bersama siswa yang diwawancarai dan dua orang gurunya.
-    \item Foto bersama siswa yang diwawancarai dan orang tuanya.
-    \item Sosialisasi aplikasi SIBIKU ke pengguna melalui Zoom, dilanjutkan
-    dengan pengguna mencoba aplikasi di smartphone masing-masing dan mengisi
-    kuesioner.
-\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lampiran-a-1}
+    \caption{Foto bersama siswa yang diwawancarai dan dua orang gurunya.}
+    \label{fig:lampiran-a-1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lampiran-a-2}
+    \caption{Foto bersama siswa yang diwawancarai dan orang tuanya.}
+    \label{fig:lampiran-a-2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lampiran-a-3}
+    \caption{Sosialisasi aplikasi SIBIKU ke pengguna melalui Zoom.}
+    \label{fig:lampiran-a-3}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{lampiran-a-4}
+    \caption{Pengguna mencoba aplikasi di smartphone masing-masing dan mengisi kuesioner.}
+    \label{fig:lampiran-a-4}
+\end{figure}
 
 \chapter{Perhitungan Usability Test}
 \label{sec:lampiran-perhitungan}

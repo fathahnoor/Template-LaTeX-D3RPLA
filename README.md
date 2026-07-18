@@ -18,7 +18,9 @@ Template LaTeX untuk dokumen **Program Studi D3 Rekayasa Perangkat Lunak Aplikas
 
 ### Kebutuhan
 - Distribusi LaTeX, mis. [TeX Live](https://www.tug.org/texlive/), [MiKTeX](https://miktex.org/), atau [MacTeX](https://www.tug.org/mactex/).
-- Untuk `Template Jurnal.tex` diperlukan kelas `IEEEtran` (umumnya sudah termasuk dalam TeX Live / MiKTeX).
+- Untuk `Template Jurnal.tex` diperlukan kelas `IEEEtran` (paket `texlive-publishers`)
+  serta paket `algorithmic` (paket `texlive-science` / bundle `algorithms`).
+  Keduanya umumnya sudah termasuk dalam instalasi TeX Live / MiKTeX yang lengkap.
 
 ### Kompilasi
 
@@ -58,9 +60,36 @@ Ketiga template TA (`Reguler`, `Madusem`, `Publikasi`) memiliki struktur front m
 
 ## Gambar / Aset
 
-Placeholder gambar pada template ditandai dengan `\fbox{...}`. Untuk menambahkan gambar asli:
-1. Letakkan file gambar di folder `assets/` (path sudah diset via `\graphicspath{{assets/}}`).
-2. Ganti blok `\fbox{...}` dengan `\includegraphics[width=\linewidth]{nama-file}`.
+Semua gambar contoh telah diekstrak dari dokumen `.docx` referensi dan disediakan
+di folder `assets/` sehingga PDF hasil kompilasi LaTeX sudah menampilkan gambar
+yang sama persis dengan PDF dari Word. Struktur folder:
+
+```
+assets/
+├── reguler/     # 23 gambar untuk Template TA Reguler (cover, header logo, 13 figure, tabel IoT, 4 foto lampiran)
+├── madusem/     # 3 gambar untuk Template TA Madusem (cover, header logo, logo Telkom)
+├── publikasi/   # 3 gambar untuk Template TA Publikasi (cover, header logo, logo Telkom)
+├── jurnal/      # 4 gambar untuk Template Jurnal (arsitektur, struktur SQLite, 2 implementasi)
+└── cv/          # 1 gambar untuk Template CV (pas foto)
+```
+
+Setiap template sudah men-set `\graphicspath` ke subfoldernya masing-masing, jadi
+`\includegraphics{nama-file}` (tanpa path) langsung menemukan gambarnya. Untuk
+mengganti gambar contoh dengan gambar kamu sendiri, cukup timpa file di folder
+`assets/<template>/` yang sesuai dengan nama yang sama.
+
+> **Catatan konversi:** Beberapa gambar pada `.docx` asli berformat EMF dan TIF
+> (tidak didukung `pdflatex`). File-file tersebut telah dikonversi ke PNG dan
+> diberi akhiran nama yang sama (tanpa label `_converted`). Semua gambar di
+> folder `assets/` sudah dalam format yang didukung LaTeX (PNG/JPG).
+>
+> **Atribusi gambar:** Sama seperti file `.docx`, semua gambar di folder `assets/`
+> **diambil dari dokumen referensi milik D3RPLA, Telkom University**
+> (sumber: <https://projects.d3ifcool.org/dokumen-pa>) dan hanya disertakan
+> sebagai **contoh** agar hasil kompilasi LaTeX menampilkan gambar yang sama
+> dengan Word. Gambar-gambar ini wajib diganti dengan gambar milik kamu sendiri
+> saat menyusun Tugas Akhir. Pencantuman gambar contoh di repo ini tidak
+> menggantikan pedoman resmi prodi.
 
 ## Lisensi & Atribusi
 

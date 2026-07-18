@@ -23,9 +23,10 @@
 \usepackage{fancyhdr}
 
 \hypersetup{colorlinks=true,urlcolor=blue}
+\graphicspath{{assets/cv/}{assets/}}
 
 % --- Judul section ---
-\titleformat{\section}{\large\bfseries\MakeUppercase}{0pt}{0pt}[\vspace{2pt}\hrule\vspace{4pt}]
+\titleformat{\section}{\large\bfseries}{0pt}{0pt}{}[\vspace{2pt}\hrule\vspace{4pt}]
 \titlespacing*{\section}{0pt}{12pt}{6pt}
 
 \pagestyle{fancy}
@@ -44,12 +45,18 @@
 % ===================== IDENTITAS DIRI =====================
 \section*{Identitas Diri}
 
-\begin{tabularx}{\textwidth}{@{}lX@{}}
-    Nama            & : \rule{6cm}{0.4pt} \\
-    NIM             & : \rule{6cm}{0.4pt} \\
-    No.\ WhatsApp   & : \rule{6cm}{0.4pt} \\
-    Link Github     & : \rule{6cm}{0.4pt} \\
-    Profil LinkedIn & : \rule{6cm}{0.4pt} \\
+\noindent
+\begin{minipage}[t]{0.35\textwidth}
+    \centering
+    \includegraphics[width=0.8\linewidth]{cv/pas-foto}
+\end{minipage}
+\hfill
+\begin{tabularx}{0.6\textwidth}{@{}lX@{}}
+    Nama            & : \rule{4cm}{0.4pt} \\
+    NIM             & : \rule{4cm}{0.4pt} \\
+    No.\ WhatsApp   & : \rule{4cm}{0.4pt} \\
+    Link Github     & : \rule{4cm}{0.4pt} \\
+    Profil LinkedIn & : \rule{4cm}{0.4pt} \\
 \end{tabularx}
 
 \vspace{6pt}

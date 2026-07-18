@@ -22,6 +22,7 @@ The Tugas Akhir (TA / final project) has **three tracks**, each with its own tem
 | `README.md` | Project documentation: template descriptions, compilation instructions, conventions. |
 | `.gitignore` | Ignores `*.docx`, LaTeX build artifacts, `.extract/`. |
 | `knowledge.md` | This file. |
+| `assets/` | Folder gambar contoh (diekstrak dari `.docx` referensi) yang dipakai semua template. Subfolder per template: `reguler/`, `madusem/`, `publikasi/`, `jurnal/`, `cv/`. Berisi PNG/JPG (EMF & TIF asli sudah dikonversi ke PNG via Inkscape/PyMuPDF). Dipush ke repo agar PDF hasil LaTeX menampilkan gambar yang sama dengan Word. **Atribusi:** gambar ini milik D3RPLA Telkom University (sumber: projects.d3ifcool.org/dokumen-pa), hanya contoh, wajib diganti saat TA sungguhan. |
 
 ### Reference only (gitignored, local only; do NOT push)
 
@@ -96,7 +97,7 @@ print(html.unescape(text))
 - **References:** IEEE style (`thebibliography` with `\bibitem`).
 - **Spacing:** Body uses `setspace` `onehalfspacing` (1.5); Abstrak/Abstract use spacing 1.
 - **Margins:** `geometry` with 3cm margins (TA templates); 2.5cm (CV).
-- **Images:** Placeholder figures use `\fbox{...}`. To use real images, drop files in `assets/` (`\graphicspath{{assets/}}` is set) and replace `\fbox{...}` with `\includegraphics`.
+- **Images:** Contoh gambar sudah diekstrak dari `.docx` referensi ke `assets/<template>/` (EMF/TIF dikonversi ke PNG via Inkscape/PyMuPDF). Setiap template men-set `\graphicspath{{assets/<template>/}{assets/}}`. Header logo via `\fancyhead[R]` dengan `\setlength{\headheight}{16pt}`. Cover banner via `\includegraphics` di `titlepage`. Semua placeholder `\fbox{...}` pada figure sudah diganti dengan `\includegraphics`.
 
 ## D3RPLA content conventions
 
