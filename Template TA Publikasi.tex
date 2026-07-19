@@ -9,11 +9,29 @@
 % berbeda dari Reguler (Kata Pengantar sebelum Pernyataan pada sumber asli).
 % ============================================================================
 
-\documentclass[a4paper,12pt,oneside]{report}
+\documentclass[a4paper,11pt,oneside]{report}
 
-% --- Paket standar ---
-\usepackage[a4paper,margin=3cm]{geometry}
-\usepackage[onehalfspacing]{setspace}
+% --- Engine & jenis huruf: Times New Roman (mengikuti DOCX referensi) ---
+% XeLaTeX/LuaLaTeX memakai Times New Roman sistem bila tersedia; pdfLaTeX
+% memakai TeX Gyre Termes (clone Times New Roman, metrik kompatibel).
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage{tgtermes}
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{%
+    \IfFontExistsTF{TeX Gyre Termes}{\setmainfont{TeX Gyre Termes}}{}}
+\fi
+% --- Margin mengikuti DOCX: kiri 4cm, kanan 3cm, atas 3cm, bawah 4cm ---
+\usepackage[a4paper,left=4cm,right=3cm,top=3cm,bottom=4cm,headheight=15pt,headsep=0.6cm]{geometry}
+% --- Spasi & paragraf mengikuti DOCX: spasi 1.15, tanpa indent awal,
+%     jarak 10pt antar paragraf (Word default). Bila prodi mewajibkan
+%     spasi 1.5, ganti \setstretch{1.15} dengan
+%     \usepackage[onehalfspacing]{setspace}. ---
+\usepackage{setspace}
+\setstretch{1.15}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{10pt}
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -29,15 +47,21 @@
 \usepackage{hyperref}
 \usepackage{url}
 \usepackage{pdflscape}
+\usepackage{xcolor}
+\usepackage{eso-pic}% pita abu-abu full-bleed pada header
+\usepackage{tikz}% overlay pita + logo header
 
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
-\captionsetup{font=small,labelfont=bf,labelsep=period}
+\definecolor{captioncolor}{HTML}{0E2841}
+\DeclareCaptionFont{nine}{\fontsize{9}{11}\selectfont}
+\DeclareCaptionFont{capcolor}{\color{captioncolor}}
+\captionsetup{font={nine,capcolor},labelfont=bf,labelsep=period}
 \graphicspath{{assets/publikasi/}{assets/}}
 
-\titleformat{\chapter}[display]{\normalfont\huge\bfseries\filcenter}{BAB \thechapter}{0pt}{}
-\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\titleformat{\chapter}[display]{\normalfont\fontsize{20pt}{24pt}\selectfont\bfseries\filcenter}{BAB \thechapter}{0pt}{}
+\titleformat{\section}{\normalfont\fontsize{16pt}{19pt}\selectfont\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{14pt}{17pt}\selectfont\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesubsubsection}{1em}{}
 
 \usepackage{chngcntr}
 \counterwithin{figure}{chapter}
@@ -45,20 +69,38 @@
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 
+% --- Header: pita abu-abu (#A5A5A5) full-bleed + logo Tel-U di kanan,
+%     mengikuti DOCX referensi (tidak ada teks running heading). ---
+\definecolor{headergray}{HTML}{A5A5A5}
+\newif\ifheaderband \headerbandfalse
+\AddToShipoutPictureBG{%
+  \ifheaderband
+    \begin{tikzpicture}[remember picture, overlay]
+      \fill[headergray] (current page.north west)
+        rectangle ([yshift=-1.98cm]current page.north east);
+      \node[anchor=north east, inner sep=0pt]
+        at ([xshift=-0.5cm, yshift=-0.65cm]current page.north east)
+        {\includegraphics[height=0.69cm]{header-logo}};
+    \end{tikzpicture}%
+  \fi
+}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\leftmark}
-\fancyhead[R]{\raisebox{-0.1cm}{\includegraphics[height=0.7cm]{header-logo}}}
 \fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\setlength{\headheight}{22pt}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
 
 \begin{document}
 
 % =====================================================================
 % HALAMAN COVER
 % =====================================================================
+% --- Penomoran halaman: front matter pakai angka romawi kecil (cover=i,
+%     Persembahan=ii, ...), Bab I dst. pakai angka arab (1, 2, ...) --
+%     mengikuti DOCX referensi (pgNumType lowerRoman start=1 lalu 2). ---
+\pagenumbering{roman}
 \begin{titlepage}
+    \setlength{\parskip}{0pt}%
     \centering
     \vspace*{1cm}
     {\bfseries\Large JUDUL TUGAS AKHIR DALAM BAHASA INDONESIA\\(maksimal 3 baris)\par}
@@ -70,7 +112,7 @@
     Mata Kuliah Tugas Akhir\\
     \textbf{Jalur Publikasi}\par
     \vspace{1cm}
-    \includegraphics[height=3cm]{cover-banner}\par
+    \includegraphics[width=4.67cm,height=6.55cm]{cover-banner}\par
     \vspace{1cm}
 
     Disusun oleh,\\
@@ -84,6 +126,7 @@
     \textbf{BANDUNG}\\
     202\ldots\par
 \end{titlepage}
+\headerbandtrue
 
 % =====================================================================
 % LEMBAR PERSEMBAHAN
@@ -234,6 +277,9 @@ DO NOT USE ENGLISH TRANSLATOR SOFTWARE WITHOUT FURTHER EDITING}
 % =====================================================================
 % BAB I RINGKASAN EKSEKUTIF
 % =====================================================================
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 \chapter{Ringkasan Eksekutif}
 
 \section{Extended Abstract}
@@ -309,7 +355,7 @@ Contoh jadwal Pelaksanaan dalam satuan waktu minggu:
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=5cm]{logo-telkom}
+    \includegraphics[width=4.05cm,height=4.82cm]{logo-telkom}
     \caption{Logo Telkom University}
     \label{fig:logo-telkom}
 \end{figure}

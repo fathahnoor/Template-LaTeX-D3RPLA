@@ -9,6 +9,18 @@
 
 \documentclass[conference,a4paper,10pt]{IEEEtran}
 
+% --- Engine & jenis huruf: Times New Roman (mengikuti DOCX referensi) ---
+% XeLaTeX/LuaLaTeX memakai Times New Roman sistem bila tersedia; pdfLaTeX
+% memakai TeX Gyre Termes (clone Times New Roman, metrik kompatibel).
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage{tgtermes}
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{%
+    \IfFontExistsTF{TeX Gyre Termes}{\setmainfont{TeX Gyre Termes}}{}}
+\fi
+
 % --- Paket standar ---
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
@@ -202,7 +214,7 @@ pengguna dapat diakomodir.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.85\linewidth]{arsitektur}
+    \includegraphics[width=8.58cm,height=2.68cm]{arsitektur}
     \caption{Arsitektur aplikasi.}
     \label{fig:arsitektur}
 \end{figure}
@@ -227,7 +239,7 @@ tristique senectus et netus et malesuada.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=\linewidth]{struktur-sqlite}
+    \includegraphics[width=8.58cm,height=3.31cm]{struktur-sqlite}
     \caption{Struktur Data SQLite.}
     \label{fig:struktur-sqlite}
 \end{figure}
@@ -284,7 +296,7 @@ fungsinya masing-masing.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[height=6cm]{implementasi-1}\hspace{0.5cm}\includegraphics[height=6cm]{implementasi-2}
+    \includegraphics[width=4cm,height=8.22cm]{implementasi-1}\hspace{0.3cm}\includegraphics[width=4cm,height=8.23cm]{implementasi-2}
     \caption{Aplikasi hasil implementasi.}
     \label{fig:implementasi}
 \end{figure}

@@ -9,8 +9,27 @@
 
 \documentclass[a4paper,11pt]{article}
 
-% --- Paket standar ---
-\usepackage[a4paper,margin=2.5cm]{geometry}
+% --- Engine & jenis huruf: Aptos/Calibri (sans-serif, mengikuti DOCX) ---
+% XeLaTeX/LuaLaTeX memakai Calibri/Carlito sistem bila tersedia; pdfLaTeX
+% memakai TeX Gyre Heros (clone Helvetica/Calibri, metrik kompatibel).
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage{tgheros}
+  \renewcommand{\familydefault}{\sfdefault}
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Calibri}{\setmainfont{Calibri}}{%
+    \IfFontExistsTF{Carlito}{\setmainfont{Carlito}}{%
+      \IfFontExistsTF{TeX Gyre Heros}{\setmainfont{TeX Gyre Heros}}{}}}
+\fi
+% --- Margin mengikuti DOCX: 3cm semua sisi ---
+\usepackage[a4paper,margin=3cm]{geometry}
+% --- Paragraf mengikuti DOCX (Word default): tanpa indent awal,
+%     jarak 8pt antar paragraf, spasi 1.08. ---
+\usepackage{setspace}
+\setstretch{1.08}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{8pt}
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -48,7 +67,7 @@
 \noindent
 \begin{minipage}[t]{0.35\textwidth}
     \centering
-    \includegraphics[width=0.8\linewidth]{cv/pas-foto}
+    \includegraphics[width=3.00cm,height=4.00cm]{cv/pas-foto}
 \end{minipage}
 \hfill
 \begin{tabularx}{0.6\textwidth}{@{}lX@{}}

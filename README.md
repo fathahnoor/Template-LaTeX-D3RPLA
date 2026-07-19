@@ -21,11 +21,34 @@ Template LaTeX untuk dokumen **Program Studi D3 Rekayasa Perangkat Lunak Aplikas
 - Untuk `Template Jurnal.tex` diperlukan kelas `IEEEtran` (paket `texlive-publishers`)
   serta paket `algorithmic` (paket `texlive-science` / bundle `algorithms`).
   Keduanya umumnya sudah termasuk dalam instalasi TeX Live / MiKTeX yang lengkap.
+- Untuk **pita abu-abu header** dibutuhkan paket `eso-pic` & `tikz` (umumnya
+  sudah termasuk dalam `texlive-latex-recommended` / `texlive-pictures`).
 
-### Kompilasi
+### Engine TeX & Jenis Huruf
+
+Template ini **mendeteksi engine TeX secara otomatis** (`iftex`) dan memilih
+jenis huruf yang sesuai agar hasil PDF sedekat mungkin dengan dokumen `.docx`
+referensi:
+
+| Template | DOCX referensi | pdfLaTeX | XeLaTeX / LuaLaTeX |
+|----------|----------------|----------|---------------------|
+| `TA Reguler`, `TA Madusem`, `TA Publikasi`, `Jurnal` | Times New Roman | `tgtermes` (TeX Gyre Termes — clone Times New Roman) | `fontspec` + Times New Roman (fallback: TeX Gyre Termes) |
+| `CV` | Aptos / Calibri (sans) | `tgheros` (TeX Gyre Heros — clone Helvetica) | `fontspec` + Calibri → Carlito → TeX Gyre Heros |
+
+- **Disarankan:** XeLaTeX atau LuaLaTeX bila font Times New Roman / Calibri
+  tersedia di sistem (hasil paling identik dengan DOCX).
+- **Kompatibel:** pdfLaTeX (memakai clone TeX Gyre — metrik kompatibel, tampilan
+  sangat mirip, tidak butuh font sistem).
 
 ```bash
-# Contoh untuk TA Reguler (butuh dua kali pass untuk TOC & referensi)
+# Disarankan (bila font sistem tersedia) — paling identik dengan DOCX:
+xelatex "Template TA Reguler.tex"
+xelatex "Template TA Reguler.tex"
+# atau
+lualatex "Template TA Reguler.tex"
+lualatex "Template TA Reguler.tex"
+
+# Kompatibel di mana saja (memakai clone TeX Gyre):
 pdflatex "Template TA Reguler.tex"
 pdflatex "Template TA Reguler.tex"
 
@@ -35,6 +58,31 @@ pdflatex "Template Jurnal.tex"
 # Atau gunakan latexmk (otomatis multi-pass)
 latexmk -pdf "Template TA Reguler.tex"
 ```
+
+> ⚠️ **Wajib kompilasi DUA KALI (atau pakai `latexmk`).** Pass pertama
+> menulis referensi TOC & posisi overlay `tikz remember picture`; pass kedua
+> menempatkan pita abu-abu header & cross-reference dengan benar. Bila hanya
+> sekali pass, pita header mungkin belum muncul / salah posisi.
+
+### Format Mengikuti DOCX Referensi
+
+Semua template telah diselaraskan agar PDF hasil LaTeX sedekat mungkin dengan
+PDF dari `.docx` referensi:
+
+- **Margin TA:** kiri 4 cm, kanan 3 cm, atas 3 cm, bawah 4 cm (sesuai `pgMar`
+  Word). **Margin CV:** 3 cm semua sisi.
+- **Spasi & paragraf TA:** spasi 1,15 (Word default), tanpa indent awal, jarak
+  10 pt antar paragraf. **CV:** spasi 1,08, parskip 8 pt.
+- **Heading TA:** Bab (H1) 20 pt bold center; sub-bab (H2) 16 pt bold; sub-sub
+  (H3) 14 pt bold; sub-sub-sub (H4) 12 pt bold (sesuai `sz`/`szCs` Word).
+- **Caption TA:** 9 pt, warna `#0E2841`, label bold, pemisah titik. **Caption
+  Jurnal:** 8 pt (default `IEEEtran`, sesuai Word).
+- **Header TA:** pita abu-abu `#A5A5A5` full-bleed (1,98 cm) + logo Tel-U
+  (0,69 cm) di kanan, tanpa teks running heading (sesuai DOCX).
+- **Penomoran halaman TA:** front matter (cover→Daftar Lampiran) pakai angka
+  romawi kecil (i, ii, iii, …); Bab I dst. pakai angka arab (1, 2, 3, …).
+- **Ukuran gambar:** setiap `\includegraphics` di-set ke ukuran tampil (cm)
+  yang persis sama dengan DOCX referensi.
 
 ### Struktur Dokumen TA
 
