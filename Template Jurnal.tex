@@ -34,12 +34,22 @@
 \usepackage{booktabs}
 \usepackage{tabularx}
 \usepackage{float}
+\usepackage{eso-pic}
+
+% Template Word memakai body 10 pt dengan leading rapat sekitar 10 pt.
+\renewcommand{\normalsize}{\fontsize{10pt}{10pt}\selectfont}
+\renewcommand{\small}{\fontsize{9pt}{9.5pt}\selectfont}
+\renewcommand{\IEEEkeywordsname}{Keywords}
 
 \graphicspath{{assets/jurnal/}{assets/}}
 
 \hypersetup{colorlinks=true,linkcolor=black,urlcolor=blue,citecolor=black}
 
 \begin{document}
+
+\AddToShipoutPictureFG*{%
+  \AtPageLowerLeft{\hspace*{1.58cm}\raisebox{1.55cm}{%
+    \fontsize{6pt}{7pt}\selectfont XXX-X-XXXX-XXXX-X/XX/\$XX.00~\copyright~20XX IEEE}}}
 
 % ===================== JUDUL & PENULIS =====================
 \title{JUDUL TUGAS AKHIR}
@@ -164,6 +174,7 @@ tincidunt in eu neque. Integer porta lobortis nulla, vel dignissim neque
 pellentesque vel. Donec erat magna, lobortis id tempus ut.
 
 % ===================== ANALISIS & PERANCANGAN =====================
+\newpage
 \section{Analisis Kebutuhan dan Perancangan}
 Bagian ini menjelaskan analisis kebutuhan pengguna, perancangan aplikasi hingga
 kebutuhan hardware \& software dalam pengembangan aplikasi SIBIKU.
@@ -282,6 +293,7 @@ perangkat keras dan perangkat lunak berikut.
 \end{table}
 
 % ===================== IMPLEMENTASI & PENGUJIAN =====================
+\newpage
 \section{Implementasi dan Pengujian}
 Bagian ini menjelaskan implementasi aplikasi, hingga pengujian yang dilakukan,
 yaitu pengujian fungsionalitas dan pengujian ke pengguna.

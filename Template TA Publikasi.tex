@@ -11,27 +11,24 @@
 
 \documentclass[a4paper,11pt,oneside]{report}
 
-% --- Engine & jenis huruf: Times New Roman (mengikuti DOCX referensi) ---
-% XeLaTeX/LuaLaTeX memakai Times New Roman sistem bila tersedia; pdfLaTeX
-% memakai TeX Gyre Termes (clone Times New Roman, metrik kompatibel).
+% --- Engine & jenis huruf: Aptos (mengikuti DOCX referensi) ---
+% Calibri dipakai sebagai fallback metrik-kompatibel jika Aptos tidak tersedia.
 \usepackage{iftex}
 \ifPDFTeX
-  \usepackage{tgtermes}
+  \usepackage{tgheros}
+  \renewcommand{\familydefault}{\sfdefault}
 \else
   \usepackage{fontspec}
-  \IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{%
-    \IfFontExistsTF{TeX Gyre Termes}{\setmainfont{TeX Gyre Termes}}{}}
+  \IfFontExistsTF{Calibri}{\setmainfont{Calibri}}{\setmainfont{TeX Gyre Heros}}
 \fi
 % --- Margin mengikuti DOCX: kiri 4cm, kanan 3cm, atas 3cm, bawah 4cm ---
 \usepackage[a4paper,left=4cm,right=3cm,top=3cm,bottom=4cm,headheight=15pt,headsep=0.6cm]{geometry}
-% --- Spasi & paragraf mengikuti DOCX: spasi 1.15, tanpa indent awal,
-%     jarak 10pt antar paragraf (Word default). Bila prodi mewajibkan
-%     spasi 1.5, ganti \setstretch{1.15} dengan
-%     \usepackage[onehalfspacing]{setspace}. ---
+% --- Spasi & paragraf mengikuti style Normal DOCX: spasi tunggal,
+%     tanpa indent awal dan tanpa jarak tambahan antar paragraf. ---
 \usepackage{setspace}
-\setstretch{1.15}
+\setstretch{1}
 \setlength{\parindent}{0pt}
-\setlength{\parskip}{10pt}
+\setlength{\parskip}{0pt}
 \usepackage{array}
 \usepackage{booktabs}
 \usepackage{tabularx}
@@ -58,14 +55,28 @@
 \captionsetup{font={nine,capcolor},labelfont=bf,labelsep=period}
 \graphicspath{{assets/publikasi/}{assets/}}
 
-\titleformat{\chapter}[display]{\normalfont\fontsize{20pt}{24pt}\selectfont\bfseries\filcenter}{BAB \thechapter}{0pt}{}
-\titleformat{\section}{\normalfont\fontsize{16pt}{19pt}\selectfont\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}{\normalfont\fontsize{14pt}{17pt}\selectfont\bfseries}{\thesubsection}{1em}{}
-\titleformat{\subsubsection}{\normalfont\fontsize{12pt}{14pt}\selectfont\bfseries}{\thesubsubsection}{1em}{}
+% --- Nama elemen dan heading mengikuti DOCX ---
+\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\listfigurename}{DAFTAR GAMBAR}
+\renewcommand{\listtablename}{DAFTAR TABEL}
+\renewcommand{\figurename}{Gambar}
+\renewcommand{\tablename}{Tabel}
+\renewcommand{\chaptername}{BAB}
+\renewcommand{\appendixname}{LAMPIRAN}
+\titleformat{\chapter}[block]{\normalfont\fontsize{20pt}{24pt}\selectfont\bfseries\filcenter}{BAB \Roman{chapter}}{0.5em}{\MakeUppercase}
+\titlespacing*{\chapter}{0pt}{0pt}{18pt}
+\titleformat{\section}{\normalfont\normalsize\bfseries}{\thesection}{0.75em}{}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.75em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{0.75em}{}
+\titlespacing*{\subsubsection}{0pt}{8pt}{4pt}
 
 \usepackage{chngcntr}
 \counterwithin{figure}{chapter}
 \counterwithin{table}{chapter}
+\renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thesection}{\arabic{chapter}.\arabic{section}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 
@@ -77,9 +88,9 @@
   \ifheaderband
     \begin{tikzpicture}[remember picture, overlay]
       \fill[headergray] (current page.north west)
-        rectangle ([yshift=-1.98cm]current page.north east);
+        rectangle ([yshift=-1.78cm]current page.north east);
       \node[anchor=north east, inner sep=0pt]
-        at ([xshift=-0.5cm, yshift=-0.65cm]current page.north east)
+        at ([xshift=-1.5cm, yshift=-0.50cm]current page.north east)
         {\includegraphics[height=0.69cm]{header-logo}};
     \end{tikzpicture}%
   \fi
@@ -400,6 +411,7 @@ penulis.
 Setelah naskah diterima, penerbit akan memulai proses publikasi yang bisa
 berupa terbitnya artikel dalam edisi cetak atau daring dari jurnal ilmiah, serta
 penyebarluasan hasil penelitian kepada publik akademik yang lebih luas. Penulis
+\newpage
 juga perlu memperhatikan hak cipta dan lisensi yang terkait dengan publikasi
 tersebut untuk memastikan keberlanjutan dan pengakuan atas karya ilmiah yang
 telah dipublikasikan.
@@ -467,8 +479,9 @@ I. Tin, ``Liputan 6 Tekno,'' 21 November 2016. [Online]. Available:
 % LAMPIRAN
 % =====================================================================
 \appendix
-\chapter{Lampiran}
-Bagian ini berisi lampiran-lampiran pendukung laporan tugas akhir.
+\chapter*{Lampiran}
+\addcontentsline{toc}{chapter}{LAMPIRAN}
+Bagian ini berisi Lampiran.
 
 \section*{Lampiran 1}
 \addcontentsline{toc}{section}{Lampiran 1}
